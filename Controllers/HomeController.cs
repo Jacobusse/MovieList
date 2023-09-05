@@ -6,16 +6,19 @@ namespace MovieList.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly MovieContext _db;
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(MovieContext db, ILogger<HomeController> logger)
     {
+        _db = db;
         _logger = logger;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var movies = _db.Movies.OrderBy(m => m.Name).ToList();
+        return View(movies);
     }
 
     public IActionResult Privacy()
