@@ -9,6 +9,7 @@
             <th>Name</th>
             <th>Year</th>
             <th>Rating</th>
+            <th>Genre</th>
             <th>
                 <a asp-controller="Movie" asp-action="Add" class="btn btn-success">Add</a>
             </th>
@@ -20,6 +21,7 @@
             <td>@movie.Name</td>
             <td>@movie.Year</td>
             <td>@movie.Rating</td>
+            <td>@movie?.Genre.Name</td>
             <td>
                 <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId" class="btn btn-primary">Edit</a>
             </td>

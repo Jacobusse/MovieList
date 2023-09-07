@@ -18,6 +18,7 @@ public class MovieController : Controller
     [HttpGet]
     public IActionResult Add()
     {
+        ViewBag.Genres = _db.Genres.OrderBy(g => g.Name).ToList();
         return View("Edit", new Movie());
     }
 
@@ -25,6 +26,7 @@ public class MovieController : Controller
     public IActionResult Edit(int id)
     {
         var movie = _db.Movies.SingleOrDefault(m => m.MovieId == id);
+        ViewBag.Genres = _db.Genres.OrderBy(g => g.Name).ToList();
         return View(movie);
     }
 
@@ -32,6 +34,7 @@ public class MovieController : Controller
     public IActionResult Edit(Movie movie)
     {
         if (!ModelState.IsValid) {
+            ViewBag.Genres = _db.Genres.OrderBy(g => g.Name).ToList();
             return View(movie);
         }
 

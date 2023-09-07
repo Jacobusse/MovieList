@@ -1,4 +1,6 @@
 
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+
 namespace MovieList.Models;
 
 public class Movie
@@ -10,5 +12,7 @@ public class Movie
     public int? Rating { get; set; }
 
     public char GenreKey { get; set; }
+
+    [ValidateNever]
     public Genre Genre { get; } = null!;
 }
